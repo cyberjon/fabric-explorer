@@ -1,29 +1,49 @@
 {
     "network-config": {
-        "org1": {
-            "name": "org",
-            "mspid": "ORGMSP",
-            "peer1": {
-                "requests": "grpcs://peer0.example.com:7051",
-                "events": "grpcs://peer0.example.com:7053",
-                "server-hostname": "peer0.example.com",
-                "tls_cacerts": "/artifacts/crypto-config/peerOrganizations/example.com/peers/peer0.example.com/msp/tlscacerts/tlsca.example.com-cert.pem"
+        "JD": {
+            "name": "JD",
+            "mspid": "JDMSP",
+            "ca": "https://ca.jd.cyberjon.com:7054",
+            "peer0.jd.cyberjon.com": {
+                "requests": "grpcs://peer0.jd.cyberjon.com:7051",
+                "events": "grpcs://peer0.jd.cyberjon.com:7053",
+                "server-hostname": "peer0.jd.cyberjon.com",
+                "tls_cacerts": "/composer/crypto-config/peerOrganizations/jd.cyberjon.com/peers/peer0.jd.cyberjon.com/msp/tlscacerts/tlsca.jd.cyberjon.com-cert.pem"
             },
             "admin": {
-                "key": "/artifacts/crypto-config/peerOrganizations/example.com/users/Admin@example.com/msp/keystore",
-                "cert": "/artifacts/crypto-config/peerOrganizations/example.com/users/Admin@example.com/msp/signcerts"
+                "key": "/composer/crypto-config/peerOrganizations/jd.cyberjon.com/users/Admin@jd.cyberjon.com/msp/keystore",
+                "cert": "/composer/crypto-config/peerOrganizations/jd.cyberjon.com/users/Admin@jd.cyberjon.com/msp/signcerts"
             }
-        }
+        },
+        "TB": {
+            "name": "TB",
+            "mspid": "TBMSP",
+            "ca": "https://ca.tb.cyberjon.com:7054",
+            "peer0.tb.cyberjon.com": {
+                "requests": "grpcs://peer0.tb.cyberjon.com:7051",
+                "events": "grpcs://peer0.tb.cyberjon.com:7053",
+                "server-hostname": "peer0.tb.cyberjon.com",
+                "tls_cacerts": "/composer/crypto-config/peerOrganizations/tb.cyberjon.com/peers/peer0.tb.cyberjon.com/msp/tlscacerts/tlsca.tb.cyberjon.com-cert.pem"
+            },
+            "admin": {
+                "key": "/composer/crypto-config/peerOrganizations/tb.cyberjon.com/users/Admin@tb.cyberjon.com/msp/keystore",
+                "cert": "/composer/crypto-config/peerOrganizations/tb.cyberjon.com/users/Admin@tb.cyberjon.com/msp/signcerts"
+            }
     },
     "orderer": [{
-        "url": "grpcs://orderer.example.com:7050",
-        "server-hostname": "orderer.example.com",
-        "tls_cacerts": "/artifacts/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem"
+        "url": "grpcs://jdord.cyberjon.com:7050",
+        "server-hostname": "jdord.cyberjon.com",
+        "tls_cacerts": "/composer/crypto-config/ordererOrganizations/cyberjon.com/orderers/tbord.cyberjon.com/msp/tlscacerts/tlsca.cyberjon.com-cert.pem"
+    },
+    {
+        "url": "grpcs://tbord.cyberjon.com:7050",
+        "server-hostname": "tbord.cyberjon.com",
+        "tls_cacerts": "/composer/crypto-config/ordererOrganizations/cyberjon.com/orderers/tbord.cyberjon.com/msp/tlscacerts/tlsca.cyberjon.com-cert.pem"
     }],
     "host": "localhost",
     "port": "8080",
     "channel": "default",
-    "channelPath": "../../artifacts/channel-artifacts/channel.tx",
+    "channelPath": "/composer/channel-artifacts/channel.tx",
     "GOPATH": "/usr/src/blockchain/",
     "keyValueStore": "/tmp/fabric-client-kvs",
     "enableTls": true,
@@ -37,5 +57,6 @@
         "database": "fabricexplorer",
         "username": "hppoc",
         "passwd": "password"
+    }
     }
 }
