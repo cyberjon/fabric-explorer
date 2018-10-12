@@ -2,23 +2,22 @@ postgres:
     container_name: postgres
     networks:
         - basic
-    image: postgres:latest
+    image: 'postgres:latest'
     restart: always
     volumes:
-        - ./v1.1/fabricexplorer.sql:/docker-entrypoint-initdb.d/fabricexplorer.sql
+        - './v1.1/fabricexplorer.sql:/docker-entrypoint-initdb.d/fabricexplorer.sql'
     ports:
-        - 5432:5432
-
+        - '5432:5432'
 explorer:
     container_name: explorer
     networks:
         - basic
-    image: richardholzeis/fabric-explorer:v1.1
-    command: bash -c "./wait-for-it.sh -t 120 postgres:5432 -s -- node main.js"
+    image: 'richardholzeis/fabric-explorer:v1.1'
+    command: 'bash -c "./wait-for-it.sh -t 120 postgres:5432 -s -- node main.js"'
     volumes:
-        - ./v1.1/config.json:/opt/blockchain-explorer/config.json
-        - ./path/to/crypto-config:/artifacts/crypto-config
+        - './v1.1/config.json:/opt/blockchain-explorer/config.json'
+        - './path/to/crypto-config:/artifacts/crypto-config'
     depends_on:
         - postgres
     ports:
-        - 8080:8080
+        - '8080:8080'
