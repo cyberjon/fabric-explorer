@@ -18,7 +18,7 @@ services:
         command: 'bash -c "./wait-for-it.sh -t 120 postgres:5432 -s -- node main.js"'
         volumes:
             - './v1.1/config.json:/opt/blockchain-explorer/config.json'
-            - './composer/crypto-config:/artifacts/crypto-config'
+            - '/composer/crypto-config:/artifacts/crypto-config'
         depends_on:
             - postgres
         ports:
