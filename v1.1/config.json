@@ -29,6 +29,7 @@
                 "key": "/composer/crypto-config/peerOrganizations/tb.cyberjon.com/users/Admin@tb.cyberjon.com/msp/keystore",
                 "cert": "/composer/crypto-config/peerOrganizations/tb.cyberjon.com/users/Admin@tb.cyberjon.com/msp/signcerts"
             }
+        }
     },
     "orderer": [{
         "url": "grpcs://jdord.cyberjon.com:7050",
@@ -57,6 +58,5 @@
         "database": "fabricexplorer",
         "username": "hppoc",
         "passwd": "password"
-    }
     }
 }
